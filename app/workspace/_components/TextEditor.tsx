@@ -46,7 +46,7 @@ const notes = useQuery(api.notes.GetNotes,{
     // 
     <div className="flex flex-col h-full">
     {/* Sticky Toolbar */}
-    <div className="sticky top-0 z-10 bg-white shadow-sm p-2">
+    <div className=" top-0 z-10 bg-white shadow-sm p-2">
       <EditorExtensions editor={editor} />
     </div>
 

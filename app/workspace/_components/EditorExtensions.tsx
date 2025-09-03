@@ -66,8 +66,8 @@ function EditorExtensions({editor}:any) {
       }
   return editor&&(
     <div className='p-5 '>
-         <div className="control-group">
-        <div className="button-group flex gap-3">
+         <div className="control-group ">
+        <div className="button-group flex gap-3 flex-wrap">
           <button
             onClick={() => editor.chain().focus().toggleBold().run()}
             className={editor.isActive('bold') ? 'text-blue-500' : ''}

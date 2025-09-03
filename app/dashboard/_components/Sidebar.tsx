@@ -20,7 +20,9 @@ function Sidebar() {
     });
   return (
     <div className='p-7 shadow-md h-screen'>
-        <Image src="/logo.svg" alt='logo ' width={120} height={120}/>
+        <Link href="/" className="cursor-pointer">
+        <Image src="/logo.svg" width={120} height={120} alt="logo" />
+      </Link>
         <div className='mt-10 flex flex-col gap-2'>
             
             <UploadPDFDialog isMaxFile={fileList&&fileList?.length>=5?true:false}><Button className='w-full'>+ Upload PDF</Button></UploadPDFDialog>

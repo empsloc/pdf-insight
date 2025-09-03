@@ -68,38 +68,53 @@ function UploadPDFDialog({ children, isMaxFile }: any) {
       setOpen(false)
     }
   return (
-    <Dialog open={open}>
-      <DialogTrigger asChild><Button className="w-full" disabled={isMaxFile} onClick={()=>setOpen(true)}>+ Upload PDF File</Button></DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Upload PDF file</DialogTitle>
-          <DialogDescription asChild>
-            <div className="mt-10">
-            <h2 className="div">Select a file to upload</h2>
+    <Dialog open={open} onOpenChange={setOpen}>
+  <DialogTrigger asChild>
+    <Button 
+      className="w-full" 
+      disabled={isMaxFile} 
+      onClick={() => setOpen(true)}
+    >
+      + Upload PDF File
+    </Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Upload PDF file</DialogTitle>
+      <DialogDescription asChild>
+        <div className="mt-10">
+          <h2 className="div">Select a file to upload</h2>
 
-              <div className=" gap-2 p-3 rounded-md ">
-                <input accept="application/pdf" type="file" onChange={(event)=>OnFileSelect(event)}/>
-              </div>
-              <div className="mt-2 ">
-                <label>File Name</label>
-                <Input placeholder="File name" onChange={(e)=>setFileName(e.target.value)}/>
-              </div>
-              
-              
-            </div>
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter className="sm:justify-end">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
-          <Button disabled={loading} onClick={OnUpload}>{loading?<Loader2Icon className="animate-spin"/>:"Upload"}</Button>
-          
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+          <div className=" gap-2 p-3 rounded-md ">
+            <input 
+              accept="application/pdf" 
+              type="file" 
+              onChange={(event) => OnFileSelect(event)}
+            />
+          </div>
+          <div className="mt-2 ">
+            <label>File Name</label>
+            <Input 
+              placeholder="File name" 
+              onChange={(e) => setFileName(e.target.value)}
+            />
+          </div>
+        </div>
+      </DialogDescription>
+    </DialogHeader>
+    <DialogFooter className="sm:justify-end">
+      <DialogClose asChild>
+        <Button type="button" variant="secondary" className="cursor-pointer">
+          Close
+        </Button>
+      </DialogClose>
+      <Button disabled={loading} onClick={OnUpload}>
+        {loading ? <Loader2Icon className="animate-spin" /> : "Upload"}
+      </Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+
   );
 }
 
