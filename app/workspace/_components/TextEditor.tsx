@@ -20,7 +20,7 @@ const notes = useQuery(api.notes.GetNotes,{
 
     const editor = useEditor({
         extensions: [StarterKit, Placeholder.configure({
-            placeholder: 'Start asking your questions here and prepare your notes...',
+            placeholder: 'Start taking notes and you can also asks questions related to the pdf uploaded using specific keywords...',
           }),Highlight.configure({ multicolor: true }),Underline,TextAlign.configure({
             types: ['heading', 'paragraph'],
           }),BulletList],

@@ -54,6 +54,9 @@ function Workspace() {
       provided PDF.
     </li>
     <li>
+                    Click on Save button to save the content.
+                  </li>
+    <li>
       View the uploaded PDF on the <b>right side</b> (desktop only).
     </li>
     <li>

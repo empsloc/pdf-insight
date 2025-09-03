@@ -4,10 +4,18 @@ import { AIModelResult } from '@/configs/AIModel'
 import { api } from '@/convex/_generated/api'
 import { useUser } from '@clerk/nextjs'
 import { useAction, useMutation } from 'convex/react'
-import { AlignCenter, AlignJustify, AlignLeft, AlignRight, Bold, Heading1, Heading2, Highlighter, Italic, List, Loader, Sparkles, ToggleRight, Underline, Undo } from 'lucide-react'
+import { AlignCenter, AlignJustify, AlignLeft, AlignRight, Bold, Heading1, Heading2, Highlighter, Info, Italic, List, Loader, Sparkles, ToggleRight, Underline, Undo } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import React, { useState } from 'react'
 import { toast } from 'sonner'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 
 function EditorExtensions({editor}:any) {
     const SearchAI = useAction(api.myActions.search)
@@ -16,6 +24,7 @@ function EditorExtensions({editor}:any) {
     const saveNotes = useMutation(api.notes.AddNotes)
     const  [loading, setLoading] = useState(false)
     const [saveLoading, setSaveLoading] = useState(false)
+    const [isDialogOpen, setIsDialogOpen] = useState(false)
     const onAIClick=async()=>{
       setLoading(true)
         toast("AI is working on your answer...", {
@@ -139,6 +148,13 @@ function EditorExtensions({editor}:any) {
            <Heading2/>
           </button>
 
+            {/* Info Icon opens the dialog */}
+            <button
+                onClick={() => setIsDialogOpen(true)}
+                className="p-2 rounded-lg hover:text-blue-500"
+              >
+                <Info />
+              </button>
           <button
             onClick={() => onAIClick()}
             className={ 'hover:text-blue-500 cursor-pointer flex items-center gap-2 p-2 shadow-lg rounded-lg'}
@@ -149,6 +165,48 @@ function EditorExtensions({editor}:any) {
           <Button className='cursor-pointer' onClick={()=>saveData()}>{saveLoading?<Loader className='animate-spin'/>:"Save"}</Button>
           </div>
           </div>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Note from the developer</DialogTitle>
+              <DialogDescription>
+                Here’s how you can use this workspace:
+              </DialogDescription>
+
+              <div className="mt-3">
+                <ul className="list-disc pl-6 space-y-2 text-sm">
+                  <li>
+                    Edit your notes/code in the <b>Text Editor</b> on the left.
+                  </li>
+                  <li>
+                    To use <b>AI responses</b>: write something in the editor,
+                    select the specific text you want answers to, and click the
+                    <b> Generate response</b> button on the toolbar. The response
+                    will be generated in the context of your selection and the
+                    provided PDF.
+                  </li>
+                  <li>
+                    Click on Save button to save the content.
+                  </li>
+                  <li>
+                    View the uploaded PDF on the <b>right side</b> (desktop only).
+                  </li>
+                  <li>
+                    On mobile, tap the <b>View PDF</b> button to open the PDF.
+                  </li>
+                </ul>
+              </div>
+            </DialogHeader>
+            <DialogFooter>
+              <Button
+                className="cursor-pointer"
+                onClick={() => setIsDialogOpen(false)}
+              >
+                Got it!
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
     </div>
   )
 }
