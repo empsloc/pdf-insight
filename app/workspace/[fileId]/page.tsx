@@ -37,7 +37,7 @@ function Workspace() {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Notes from the developer</DialogTitle>
+            <DialogTitle>Note from the developer</DialogTitle>
             <DialogDescription>
   Here’s how you can use this workspace:
 </DialogDescription>
@@ -48,9 +48,9 @@ function Workspace() {
       Edit your notes/code in the <b>Text Editor</b> on the left.
     </li>
     <li>
-      To use <b>AI responses</b>; write something on the text editor, select
-      the text you want answers to and click on the <b>Generate response </b>
-       button on the <b>toolbar</b> to generate a response in context of the
+      To use <b>AI responses</b>; write something on the text editor,only select
+      the particular text you want answers to and click on the <b>Generate response </b>
+       button on the <b>toolbar</b> to generate a response in context of the selected text and
       provided PDF.
     </li>
     <li>

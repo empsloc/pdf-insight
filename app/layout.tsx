@@ -46,7 +46,7 @@ import Footer from "./_components/Footer";
 
 
 export const metadata: Metadata = {
-  title: "PDF-Insight",
+  title: "pdfInsight",
   description: "Developed by empsloc",
 };
 
